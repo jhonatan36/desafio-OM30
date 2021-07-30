@@ -38,6 +38,30 @@ class CreatePacientesTable extends Migration
 				'type' => 'VARCHAR',
 				'constraint' => 15
 			],
+			'cep' => [
+				'type' => 'VARCHAR',
+				'constraint' => 8
+			],
+			'logradouro' => [
+				'type' => 'VARCHAR',
+				'constraint' => 100
+			],
+			'numero' => [
+				'type' => 'INT',
+				'constraint' => 4
+			],
+			'bairro' => [
+				'type' => 'VARCHAR',
+				'constraint' => 50
+			],
+			'cidade' => [
+				'type' => 'VARCHAR',
+				'constraint' => 50
+			],
+			'uf' => [
+				'type' => 'VARCHAR',
+				'constraint' => 2
+			],
 		]);
 		$this->forge->addKey('id_paciente', true);
 		$this->forge->createTable('pacientes');

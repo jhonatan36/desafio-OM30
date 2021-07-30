@@ -20,7 +20,13 @@ class PacientesModel extends Model
 		'nome_completo_mae',
 		'data_nascimento',
 		'cpf',
-		'cns'
+		'cns',
+		'cep',
+		'logradouro',
+		'numero',
+		'cidade',
+		'bairro',
+		'uf'
 	];
 
 	// Dates

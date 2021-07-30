@@ -17,10 +17,11 @@
                 <td><?=$paciente['id_paciente']?></td>
                 <td><?=$paciente['nome_completo']?></td>
                 <td><?=$paciente['nome_completo_mae']?></td>
-                <td><?=$paciente['data_nascimento']?></td>
+                <td><?=implode('/',array_reverse(explode('-',$paciente['data_nascimento'])))?></td>
                 <td><?=$paciente['cpf']?></td>
                 <td><?=$paciente['cns']?></td>
                 <td>
+                    <?php echo anchor('pacientes/show/' . $paciente['id_paciente'], 'Ver', ['class'=>'btn btn-sm btn-info']) ?>
                     <?php echo anchor('pacientes/edit/' . $paciente['id_paciente'], 'Editar', ['class'=>'btn btn-sm btn-warning']) ?>
                     <?php echo anchor('pacientes/destroy/' . $paciente['id_paciente'], 'Excluir', ['id'=>'excluir', 'class'=>'btn btn-sm btn-danger']) ?>
                 </td>

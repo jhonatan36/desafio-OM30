@@ -24,6 +24,14 @@ class Pacientes extends BaseController
 		]);
 	}
 
+	public function show($id)
+	{
+		return view('show', [
+			'page_title' => 'Visualizar Paciente',
+			'paciente' => $this->pacientesModel->find($id)
+		]);
+	}
+
 	public function create()
 	{
 		return view('form', [
@@ -35,7 +43,13 @@ class Pacientes extends BaseController
 	{
 		try {
 
-			$this->pacientesModel->save($this->request->getPost());
+			$dados = $this->request->getPost();
+
+			$dados['data_nascimento'] = implode('-', array_reverse(explode('/',$dados['data_nascimento'])));
+			$dados['cpf'] = preg_replace("/[^0-9]/", "", $dados['cpf']);
+			$dados['cep'] = preg_replace("/[^0-9]/", "", $dados['cep']);
+
+			$this->pacientesModel->save($dados);
 			return view('messages', [
 				'page_title' => 'Mensagens',
 				'message' => 'Paciente salvo com sucesso!'
