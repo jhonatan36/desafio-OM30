@@ -9,15 +9,17 @@ class Pacientes extends BaseController
 {
 	private $pacientesModel;
 
-	public function __constuct()
+	public function __construct()
 	{
-		$this->pacientesModel = new PacientesModel();
+		$this->pacientesModel = new PacientesModel;
 	}
 
 	public function index()
 	{
+
 		return view('pacientes', [
-			'pacientes' => $this->userModel->findAll()
+			'pacientes' => $this->pacientesModel->paginate(15),
+			'pager' => $this->pacientesModel->pager
 		]);
 	}
 }
