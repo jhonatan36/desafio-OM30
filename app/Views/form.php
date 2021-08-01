@@ -3,6 +3,7 @@
     <?= form_open('pacientes/store', ['class'=>'form-inline']) ?>
     <div class="container mt-5">
         <?= anchor(base_url(), 'Votlar', ['class'=>'btn btn-sm btn-info mb-2']) ?>
+        <?= isset($validation) ? $validation->listErrors() : '' ?>
         <div class="form-group">
             <label for="foto_perfil">Foto Perfil:</label>
             <input type="file" name="foto_perfil" id="foto_perfil" class="form-control" />
@@ -19,7 +20,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="data_nascimento">Data de Nascimento<span class="text-danger">*</span>:</label>
-                    <input type="text" name="data_nascimento" id="data_nascimento" class="form-control" value="<?= isset($paciente) ? $paciente['data_nascimento'] : '' ?>" />
+                    <input type="text" name="data_nascimento" id="data_nascimento" class="form-control" value="<?= isset($paciente) ? implode('/',array_reverse(explode('-',$paciente['data_nascimento']))) : '' ?>" />
                 </div>
                 <div class="col-md-4">
                     <label for="cpf">CPF<span class="text-danger">*</span>:</label>

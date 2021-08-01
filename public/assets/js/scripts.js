@@ -5,8 +5,7 @@ $(document).ready(function(){
     $('#data_nascimento').mask('99/99/9999');
 
 
-    //busca cep
-
+    //busca cep - VIACEP
     $('#cep').blur(function(){
 
         let cep = $('#cep').val().replace(/([^\d])+/gim, '');
@@ -22,4 +21,9 @@ $(document).ready(function(){
             }
         });
     });
+
+    //confirma exclusão do registro
+    $('#excluir').click(function(){
+        return confirm('Deseja excluir este registro?');
+    })
 });

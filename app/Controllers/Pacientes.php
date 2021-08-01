@@ -43,17 +43,32 @@ class Pacientes extends BaseController
 	{
 		try {
 
-			$dados = $this->request->getPost();
+			$rules = [
+				'nome_completo' => 'required',
+				'cpf' => 'validar_cpf',
+				'cns' => 'validar_cns'
+			];
 
-			$dados['data_nascimento'] = implode('-', array_reverse(explode('/',$dados['data_nascimento'])));
-			$dados['cpf'] = preg_replace("/[^0-9]/", "", $dados['cpf']);
-			$dados['cep'] = preg_replace("/[^0-9]/", "", $dados['cep']);
+			if (! $this->validate($rules))
+			{
+				echo view('form', [
+					'page_title' => 'Cadastrar Paciente',
+					'validation' => $this->validator
+				]);
+			} else {
 
-			$this->pacientesModel->save($dados);
-			return view('messages', [
-				'page_title' => 'Mensagens',
-				'message' => 'Paciente salvo com sucesso!'
-			]);
+				$dados = $this->request->getPost();
+
+				$dados['data_nascimento'] = implode('-', array_reverse(explode('/',$dados['data_nascimento'])));
+				$dados['cpf'] = preg_replace("/[^0-9]/", "", $dados['cpf']);
+				$dados['cep'] = preg_replace("/[^0-9]/", "", $dados['cep']);
+
+				$this->pacientesModel->save($dados);
+				return view('messages', [
+					'page_title' => 'Mensagens',
+					'message' => 'Paciente salvo com sucesso!'
+				]);
+			}
 		} catch ( ErrorException $e ) {
 			echo 'Error '.$e->getMessage();
 		}
