@@ -125,3 +125,6 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
+# Ignora pasta de upload de imagens
+/public/assets/img/*
+
