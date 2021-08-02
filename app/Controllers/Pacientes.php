@@ -48,6 +48,10 @@ class Pacientes extends BaseController
 
 			$img_dir = ROOTPATH.'public/assets/img/';
 
+			if ( !is_dir($img_dir) ) {
+				mkdir($img_dir, 755);
+			}
+
 			$rules = [
 				'nome_completo' => ['label' => 'Nome Completo', 'rules' => 'required|max_length[100]'],
 				'nome_completo_mae' => ['label' => 'Nome da Mãe', 'rules' => 'required|max_length[100]'],
