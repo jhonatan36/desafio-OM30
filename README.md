@@ -41,3 +41,52 @@ Para o front-end foi utilizado bootstrap 5, jQuery e jQuery mask.
     >php spark migrate
 1. Rodar servidor do projeto;
     >php spark serve
+
+1. acesse o sistema em "http://localhost:8000"
+
+## Caso queira rodar com Docker
+
+1. Baixar arquivos do sistema
+1. executar na raiz do projeto o docker compose
+    >docker-composer up -d
+
+    caso tudo ocorra corretamente, você terá 3 máquinas rodando
+    * desafio-web
+    * desafio-db
+    * desafio-adminer
+
+1. acesse a url "http://localhost:8080" para acessar o adminer e criar o banco no postgresql. Os dados de acesso configurados são:
+    ```
+    Sistema: PostgreSQL
+    Servidor: db
+    usuário: postgres
+    senha: 123456
+    Base de dados: 
+    ```
+
+1. Crie a base de dados "desafio"
+
+1. Configure o .env com as configurações do banco e url padrões como abaixo:
+
+    ```
+    app.baseURL = 'http://localhost:8000'
+
+    database.default.hostname = db
+    database.default.database = desafio
+    database.default.username = postgres
+    database.default.password = 123456
+    database.default.DBDriver = Postgre
+    database.default.DBPrefix =
+    ```
+
+1. acesse a maquina web para executar a migration.
+
+    >docker exec -it desafio-web /bin/sh
+
+1. dentro da máquina rode os comandos para instalar as dependências e executar as migrations
+
+    >composer install
+    
+    >php spark migrate
+
+1. acesse o sistema em "http://localhost:8000"

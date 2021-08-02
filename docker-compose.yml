@@ -3,6 +3,7 @@ version: "3.7"
 services:
     web: 
         build: .
+        container_name: desafio-web
         volumes: 
             - "./:/var/www/html/"
         ports:
@@ -10,9 +11,10 @@ services:
         networks:
             - minha-rede
         depends_on: 
-            - postgresql
+            - db
     db:
         image: postgres:12.0
+        container_name: desafio-db
         restart: always
         environment: 
             POSTGRES_PASSWORD: "123456"
@@ -20,6 +22,7 @@ services:
             - minha-rede
     adminer:
         image: adminer
+        container_name: desafio-adminer
         restart: always
         ports: 
             - "8080:8080"
