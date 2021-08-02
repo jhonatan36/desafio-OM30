@@ -3,7 +3,7 @@
     <div class="container mt-5">
         <?= anchor(base_url(), 'Votlar', ['class'=>'btn btn-sm btn-info mb-2']) ?>
         <div class="row justify-content-md-center">
-            <div class="col-md-auto">
+            <div class="col-md-4 col-md-auto">
                 <figure class="figure">
                     <img src="<?=base_url('assets/img/'.$paciente['foto_perfil'])?>" class="img-thumbnail img-fluid rounded" alt="Imagem Perfil Paciente">
                     <figcaption class="figure-caption">Imagem de Perfil do Paciente.</figcaption>
