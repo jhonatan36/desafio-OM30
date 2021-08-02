@@ -11,6 +11,12 @@ Todos os requisitos necessários foram atendidos. Foi adicionada validação de 
 
 Para o front-end foi utilizado bootstrap 5, jQuery e jQuery mask.
 
+## Requisitos
+
+1. PHP 7.4
+1. Banco PostgreSQL 10+
+1. Composer instalado
+
 ## Passos para rodar o projeto
 
 1. Baixar arquivos do projeto
@@ -35,8 +41,3 @@ Para o front-end foi utilizado bootstrap 5, jQuery e jQuery mask.
     >php spark migrate
 1. Rodar servidor do projeto;
     >php spark serve
-
-## Requisitos
-1. PHP 7.4
-1. Banco PostgreSQL 10+
-1. Composer instalado
