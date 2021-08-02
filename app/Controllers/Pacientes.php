@@ -95,6 +95,7 @@ class Pacientes extends BaseController
 				$dados['data_nascimento'] = implode('-', array_reverse(explode('/',$dados['data_nascimento'])));
 				$dados['cpf'] = preg_replace("/[^0-9]/", "", $dados['cpf']);
 				$dados['cep'] = preg_replace("/[^0-9]/", "", $dados['cep']);
+				$dados['cns'] = preg_replace("/[^0-9]/", "", $dados['cns']);
 
 				$this->pacientesModel->save($dados);
 				return view('messages', [

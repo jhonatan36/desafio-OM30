@@ -2,6 +2,7 @@ $(document).ready(function(){
     // carrega mascara dos campos
     $('#cep').mask('99999-999');
     $('#cpf').mask('999.999.999-99');
+    $('#cns').mask('999 9999 9999 9999');
     $('#data_nascimento').mask('99/99/9999');
 
 
