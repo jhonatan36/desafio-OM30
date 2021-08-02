@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+    web: 
+        build: .
+        volumes: 
+            - "./:/var/www/html/"
+        ports:
+            - "8000:80"
+        networks:
+            - minha-rede
+        depends_on: 
+            - postgresql
+    db:
+        image: postgres:12.0
+        restart: always
+        environment: 
+            POSTGRES_PASSWORD: "123456"
+        networks: 
+            - minha-rede
+    adminer:
+        image: adminer
+        restart: always
+        ports: 
+            - "8080:8080"
+        networks: 
+            - minha-rede
+
+networks: 
+    minha-rede:
+        driver: bridge
+
